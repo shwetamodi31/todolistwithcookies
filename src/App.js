@@ -1,58 +1,6 @@
-// import React, { useState, useEffect } from 'react';
-// import { useCookies } from 'react-cookie';
 
-// const TodoList = () => {
-//   const [cookies, setCookie] = useCookies(['todos']);
-//   const [todos, setTodos] = useState(cookies.todos || []);
-//   const [inputValue, setInputValue] = useState('');
-
-//   useEffect(() => {
-//     setCookie('todos', todos);
-//   }, [todos, setCookie]);
-
-//   const handleInputChange = (e) => {
-//     setInputValue(e.target.value);
-//   };
-
-//   const handleAddTodo = () => {
-//     if (inputValue.trim() !== '') {
-//       setTodos([...todos, inputValue]);
-//       setInputValue('');
-//     }
-//   };
-
-//   const handleRemoveTodo = (index) => {
-//     const newTodos = [...todos];
-//     newTodos.splice(index, 1);
-//     setTodos(newTodos);
-//   };
-
-//   return (
-//     <div>
-//       <h1>To-Do List</h1>
-//       <input
-//         type="text"
-//         value={inputValue}
-//         onChange={handleInputChange}
-//         placeholder="Enter a new task"
-//       />
-//       <button onClick={handleAddTodo}>Add</button>
-//       <ul>
-//         {todos.map((todo, index) => (
-//           <li key={index}>
-//             {todo}
-//             <button onClick={() => handleRemoveTodo(index)}>Remove</button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default TodoList;
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const TodoList = () => {
@@ -72,7 +20,7 @@ const TodoList = () => {
     if (inputValue.trim() !== '') {
       const newTasks = [...tasks, inputValue];
       setTasks(newTasks);
-      setCookie(`task_${newTasks.length - 1}`, inputValue); // Unique name for each task's cookie
+      setCookie(`task_${newTasks.length - 1}`, inputValue); 
       setInputValue('');
     }
   };
@@ -80,7 +28,7 @@ const TodoList = () => {
   const removeTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
-    removeCookie(`task_${index}`); // Remove task's cookie
+    removeCookie(`task_${index}`); 
   };
 
   
